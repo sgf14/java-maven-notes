@@ -7,7 +7,7 @@ Quick Reference- Git and Github register new project:
 	1.5) in popups click git, then create a new git directory- see details below. 
 		Use same project name for git folder name
 	  	This physically moves the project from eclipse workspace folder to local git folder.
-	  	In eclipse it adds git decoration [name] and says ..NO-HEAD.  this is ok you havent committed any files yet
+	  	In Eclipse it adds git decoration [name] and says ..NO-HEAD.  this is ok you havent committed any files yet
 	1.6) In Eclipse right click project/team/commit
 		make initial commits- do NOT push at this time.  Push is for web based github
 	  	
