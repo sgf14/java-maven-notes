@@ -15,9 +15,9 @@ Quick Reference- Git and Github register new project:
 	2.1) Go into local version of Github (the github app icon on the desktop- this accesses local Git directory)
 	2.2) Establish the project in there by selecting plus arrow icon in top left and click Add button [DO NOT create].
 	2.3) use browse button to navigate to your git folder and select the project, click ok
-	2.3) this makes your eclipse project visible in the local Github App.  Allow it a few seconds to update
+	2.4) this makes your eclipse project visible in the local Github App.  Allow it a few seconds to update
 		 it will refresh in the window.
-	2.3) Click the Publish link.  this instantiates the project in GitHub
+	2.5) Click the Publish link.  this instantiates the project in GitHub
 		Your Eclipse buttons for push are now visible- most were greyed out before.	
     
 3) Test project
@@ -30,7 +30,7 @@ Details:
 README for details.  an excerpt from that
  ... To do this you DO NOT setup the project (repository) in GitHub first.  the desktop app does
     that for you.  Im my case I had to delete the online repository I created, but was empty.
-    2.2) So unlike Eclipse/Java it doesnt actually move the project into its own git directory (and out of workspace).  Pycharm
+    So unlike Eclipse/Java it doesnt actually move the project into its own git directory (and out of workspace).  Pycharm
     leaves the project in the directory as long as you have the right link to you local git dir.
 
 
@@ -38,4 +38,6 @@ README for details.  an excerpt from that
 	Convention I have been using recently is to make a git subfolder with the same name 
 	You would not typically put the project in the base git directory. (there is already custSuptMaven) setup that way
 	If I had known at the time, I would have put it in a subfolder, like all the ones I did subsequently.
-	Iff they are the same you w
+	If they are the same you will have 2 subsequent folders of the same name, but that is ok.  you can better manage multiple 
+	projects by having them as subfolders under the main git folder.  as I have learned the hard way after initially 
+	and mistekenly putting different project at the root git folder.

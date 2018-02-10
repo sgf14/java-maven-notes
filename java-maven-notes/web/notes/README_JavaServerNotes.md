@@ -1,7 +1,8 @@
 05/28/16
 Purpose: documenting the findings about the setup for Java server for web apps.  See notes written in Java for Web Apps book- Chap 
  2 and 3.  These cover the server setup parts you have to do in the beginning to load the book downloaded projects and get them     
- running in Eclipse. THere is some detail, but many parts are assumed to save space in the book.  Had to do independent learning
+ running in Eclipse. There is some detail, but many parts it assumes the user already knows the information, in order to save space 
+ in the book.  Had to do independent learning
  in order to figure out how to get this working and it took about 2 weeks to get it working.
  hopefully this will help when you need to do the setup again in future
 
@@ -16,7 +17,16 @@ Purpose: documenting the findings about the setup for Java server for web apps. 
 	from the tomcat container within Eclipse.   see notes written in book.  this took a while to setup.  but mainly because
 	I was trying to start the server first, then the project.  For Java you need to do it the other way around- see 1) above.
 	the book doesnt really talk about this.
-	Other Java Servers: See chap 2 some other popular Java servers are JBoss (now Wildfly), WebSphere and WebLogic
+	Other Java Servers: See chap 2 some other popular Java servers are JBoss (now Wildfly), Glassfish, WebSphere and WebLogic.
+	
+	
+   Servers are split into two categories:
+	1) Web Server: (tomcat) More basic level webserver supporting http to the client, typically via servlet method.
+	2) Application server: (Glassfish, Weblogic, tomee, etc) more advanced server function that in addition to http, exposes more of 
+	the business logic and functionality to the client, including engrained security and EJB- Enterprise Java Beans.  
+	tomee is the application server version of tomcat webserver.  
+	Here is a good explanation: https://www.javaworld.com/article/2077354/learn-java/app-server-web-server-what-s-the-difference.html
+	
 
 3) Tomcat CLI: The CLI tool is run from the command line and is used to start the server independent of Eclipse.
 	a) during the testing problems with Eclipse the CLI startup/shutdown.bat 's always worked to start the localhost

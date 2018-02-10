@@ -1,28 +1,68 @@
 Purpose: This is written as a reminder of how to create a new Java web app projects in Eclipse using Maven as the builder.  Used in conjunction with Java for Web Applications (JWA), mainly chapter 2.  Have another README set for Ant build tool projects.  Maven is the preferred build tool in JWA.  Ant is described briefly in Learning Java (LJ) book.  see README_createAnt.. file for corresponding Ant instructions.
 
 Maven Quick Ref for new project creation:
-1) File/New/Project/Maven.  have not been using archetype recently.  See below
-2) Add web/WEB_INF folders
-3) Add web.xml file
-3) Update POM
-	- add base server dependencies
+1) File/New/Project/Maven.  1st tab click 'no archetype' radio, keep default workspace/add to Java EE working set
+	2ndd tab- add group id 'com.prod', artifact = '[project name you want]' Pick WAR file as type then finish.  See below
+2) Make sure a Deployment descriptor & Java Resources folder  got created (see past projects for standard tag set).
+	At this point you should also be able to right click on the propject and see Run/Run On server selection.
+3) Add com.prod [or equivalent] java base package under src/main/java.  IN Java Resources, NOT in src folder- wont add as java 
+	package otherwise. 
+4) Instantiate an initial java class file under base level package [prod].  ie HelloWorld.java as a start and to test server
+5) In folder set [not java] open src/main/webapp folder. Create a web/WEB_INF folders for jsp/css/js files- 
+	see below for archetype above notes.  Havent figured out an archetype that has base level 'web' folder.
+6) Add web.xml file under base web/WEB-INF folder, and populate with basic details- see past projects
+7) Add index.jsp file to 
+8) Update POM
+	- add base http servlet dependencies
 	- add build/plugin basic tags
-	- add web folder ref to maven plugin set 
-4)select project, right click, run as Maven install.  make sure it gets through build.  
+	- add web folder ref to maven plugin set** note this would only be if you can get base project 'web/' folder to work
+		otherwise default src/main/webapp folder- this is not needed. 
+9) Select project, right click, run as Maven install.  make sure it gets through build.  
 	- if not make alterations, then clean, then install
-5) this gets a basic project up and running.  but you also have to have webserver loaded (tomcat, tomee, jboss, jetty etc)
+10) Run/Run On server: test make sure hello world html displays in mozilla (default browser on tomcat 8) 
+	This gets a basic project up and running.  but you also have to have webserver loaded (tomcat, tomee, jboss, jetty etc)
 	
 Details/Steps:
 1) Will house the non-imported book examples under base workspace directory.
-      -all projects go under the Eclipse workspace base dir.  I have not figured out a way to create java Maven projects under a directory/folder hierarchy yet.  
-      		-however you can easily expose/hide projects w/i a perspective (Java EE) using the Project Explorer/View menu icon (small down arrow) then 'Edit Active Set' and pick the projects you want to see to avoid clutter.
-      		-I also added a readme.md file in the project base w date, reminder of where it came from and where I left off.      		
-            
-2) Open Java EE Perspective in Eclipse.  Java EE is intended for web apps amongst other Enterprise type projects/functions.
+      1.1) All projects go under the Eclipse workspace base dir.  Each maven project has to have its own folder/head- you cant nest them 
+      one within the other.
+      --
+      1.2) Archetypes/No Archetypes: if you use the archetype function then you cant re-arrange any of the base folders.  If you pick
+      no archetype selection then the packaging- on next screen- has to be a WAR file, not a JAR file- if you want it to be a web
+      project.  I like having the web/js files being under the base level project, vs under the src package, so have selected 
+      no archetype on many recnet projects.  TGhe downside obviously is you have to manually create more stuff.  Archetypes
+      are ment to eliminate some of this manual work. More detail is below w/ older notes sections.
+      	1.2.1) Archetype examples:
+      	have used artifact maven-archetype-webapp and maven-archtype-j2ee from Apache- those work well enough except the webapp
+      	folder thing described above.
+      	1.2.2) in the xx-webapp one I had to create the source folders- do this by create src/main/java in Java Resources- properties then 			Java Build Path, then Sources then	1st line select and Add Folder.
+			this creates the standard 4 java packages [folders].  Make sure normal java package icon shows up and not a folder set.
+	  --
+      1.3) Even though you cant create a folder subfolder struct you can easily expose/hide projects w/i a perspective (Java EE) 
+      using the Project Explorer/View menu icon (small down arrow) then 'Edit Active Set' and pick the projects you want to see 
+      to avoid clutter.
+      --
+      1.4) Web folder.  This particular no & archetype creates a 'src/main/webapp' folder and index.jsp under src/main.  I have not yet
+      found an archetype that has a base project level 'web' folder like the Java for Web Applications book.  For now just need to have
+      js/css/web.xml etc files in this webapp subset folder.    		
 
-3) Click File-New-Other then Maven, new Maven project.  OR you can click new and Maven Project shows up on list, both produce same results.
+7) This does not include Spring setup or anything beyond the basic additions.  See other readmes for details on subset issues.
 
-4) Popup window- select:
+10) See ...runMaven.. readme for details on server interaction- and specifically directed at tomcat.
+
+
+   ---     
+1) older notes for project creation: Open Java EE Perspective in Eclipse.  Java EE is intended for web apps amongst other Enterprise type 
+	projects/functions.
+	2.1) select/right click project, then Properties link. in window make sure there is a 'server' entry (or you cant launch it as a 
+	web app	 this is why you selected the archetype in step 1.
+	2.2) this particular archetype only lists src/main/resources under Java Resources.  typical java class file starts with
+	src/main/java, as base then the Maven Group ID (com.prod in this example)
+	 to instantiate this conventional package set (folders) you do the above steps
+
+1) Click File-New-Other then Maven, new Maven project.  OR you can click new and Maven Project shows up on list, both produce same results.
+
+1) Popup window- select:
 	1) 1st pg-keep default base dir, and have been putting these in Java EE perspective, click 'simple/skip archetype' checkbox if needed, click next
 	2) archetype-optional- 'org.codehaus.mojo.archetypes' 'webapp-javaee7' '1.1'.  there are many others to chose from.  
 	or org.apache.maven.archetype / artifact id maven-archetype-j2ee-simple and version RELEASE.  this is under the Internal selection
