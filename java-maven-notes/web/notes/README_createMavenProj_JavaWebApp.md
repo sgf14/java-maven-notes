@@ -21,6 +21,8 @@ Maven Quick Ref for new project creation:
 	- if not make alterations, then clean, then install
 10) Run/Run On server: test make sure hello world html displays in mozilla (default browser on tomcat 8) 
 	This gets a basic project up and running.  but you also have to have webserver loaded (tomcat, tomee, jboss, jetty etc)
+11) Logging.  For Larger project add this the following basics. Apache log4j2 typcial- see logging readme for details
+12) MVC.  Spring typical.  See spring mvc readme for details. 
 	
 Details/Steps:
 1) Will house the non-imported book examples under base workspace directory.
