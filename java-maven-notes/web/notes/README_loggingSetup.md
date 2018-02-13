@@ -9,3 +9,6 @@ Quick start:
 
 Details:
 1) this is largely based on Java For Web Applications - chapter 11 examples- pg 297.  confirmed steps 1-4 worked in j2ee-design project.
+2) there is also java.util.logging classes also.  See example in j2ee-design & and noted in book.  so far I have only got
+that setup to report in console, but there may be similar xml file setup to create a log file itself.  Apache's log4j works well
+enough, so havent invested the effort on java.util, slf4 etc, which offer other logging API's.
