@@ -9,7 +9,7 @@ Maven Quick Ref for new project creation:
 	package otherwise. 
 4) Instantiate an initial java class file under base level package [prod].  ie HelloWorld.java as a start and to test server
 5) In folder set [not java] open src/main/webapp folder. Create a web/WEB_INF folders for jsp/css/js files- 
-	see below for archetype above notes.  Havent figured out an archetype that has base level 'web' folder.
+	see below for archetype above notes.  Have not figured out an archetype that has base level 'web' folder.
 6) Add web.xml file under base web/WEB-INF folder, and populate with basic details- see past projects
 7) Add index.jsp file to 
 8) Update POM
