@@ -1,0 +1,33 @@
+Purpose:  setup a MySQL database connection between your javaEE project and a localhost MySQL database
+
+Note Tomcat and Glassfish servers are different.  See entity-mappings project and Eclipse version of context.xml
+for basic Tomcat server setup.  for Glassfish (ver 4 specifically) see links in Details section below:
+Note this assumes you have a localhost glassfish and MySQL instance already setup
+
+Quick Start:
+1) [entirely new setup on glassfish]  download connector/j jar [zip].  
+	Unzip, copy jar to GLASSFISH_HOME/glassfish/domain/domain1/lib folder
+	glassfish server for changes to take effect
+	mySQL/Java connector link: https://dev.mysql.com/downloads/connector/j/
+2) Restart glassfish server for changes to take effect
+3) Glasfish admin console [localhost:4848/] JDBC Connection Pool. Create name, accept basics, add DB username and password- see links 
+  for addtl details.  ping- make sure it connects successfully.
+4) admin console- JDBC Resources- JNDI name.  This has to be setup also to the table you want to use 'jdbc/[table]' associated to pool
+	you just setup.
+5) create java/resources/META-INF/persistence.xml folder/file
+6) programtically test connection via java
+
+
+
+Details
+1) helpful setup links:
+  -https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-glassfish-config.html
+  -https://javatutorial.net/configure-glassfish-mysql
+  -note that on 2nd link it incorrectly has you copying jar to bin folder- this is wrong.  when you try to set it up in connection pool
+  you will get a lot less attributes, and link will create but ping [connection] will fail.  jar file must be in domain specific lib folder.
+2) Note that tomcat [eclipse server] context.xml and the glassfish connection pool/jndi have similar db connection info.  the 2 roughly
+ correspond, but have the detailed info in different places.
+3)Note this requires mySQL to be up and running.  on localhost this server starts automatically when machine is turned on.  but 
+  regardless of local or its own server- it has to be up and running.
+4)
+5)Note that this is a standard folder and NOT a java package.  right click/new/other/folder, then add persistence.xml file
