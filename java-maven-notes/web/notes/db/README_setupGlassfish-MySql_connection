@@ -4,20 +4,34 @@ Note Tomcat and Glassfish servers are different.  See entity-mappings project an
 for basic Tomcat server setup.  for Glassfish (ver 4 specifically) see links in Details section below:
 Note this assumes you have a localhost glassfish and MySQL instance already setup
 
-Quick Start:
+Quick Start new server setup:
 1) [entirely new setup on glassfish]  download connector/j jar [zip].  
 	Unzip, copy jar to GLASSFISH_HOME/glassfish/domain/domain1/lib folder
-	glassfish server for changes to take effect
 	mySQL/Java connector link: https://dev.mysql.com/downloads/connector/j/
-2) Restart glassfish server for changes to take effect
-3) Glasfish admin console [localhost:4848/] JDBC Connection Pool. Create name, accept basics, add DB username and password- see links 
-  for addtl details.  ping- make sure it connects successfully.
-4) admin console- JDBC Resources- JNDI name.  This has to be setup also to the table you want to use 'jdbc/[table]' associated to pool
-	you just setup.
+2) Glassfish admin console [localhost:4848/] JDBC Connection Pool. 
+  2.1) Create name, accept basics, 
+  2.2) Advance properties tab: add url(s), add DB, username, password- see weblink links for addtl details. 
+  2.3) Note- Advanced tab should have ~100 entries, ~8 or so you edit.  if its only ~6 you are not connecting properly 
+  2.4) Note in url link this must include the database name in the string, or app wont connect.  ie jdbc:mysql://:3306/entitymappings
+  		this is the same format as in Tomcat instance
+  2.5) ping- upon completion make sure it connects successfully- green text display.
+3) Admin console- JDBC Resources- JNDI name.  This has to be setup also to the table you want to use 'jdbc/[table]' associated to pool
+	(w/ specific mySql db link) you just setup.  this is what is referred to in persistence.xml
+4) Restart glassfish server for changes to take effect
 5) create java/resources/META-INF/persistence.xml folder/file
-6) programtically test connection via java
+	5.1) Note the provider.  Used Hibernate in tomcat and eclipse (tophat) in Glassfish [at least j2ee-design project]
+6) Create at least one Entity POJO class- with specific db column entries.  in j2ee-design, see Author.java
+7) Instantiate EntityManagerFactory. in j2ee-design see DaoServlet
+8) Instantiate EntityManager that utilizes factory [DaoServlet]
+9) Create webpage ui display (.jsp file)
+10) programmatically test connection via java.  Tested these steps successfully Mar 2018 in j2ee-design project.
+11) new Entities- note in this method you have to alter persistence.xml w/ new entity classes (POJO's) are added over time.
+	and new <class> tagset.
 
-
+Quick Start- new db instance w/i existing server
+1) skip step 1 of above.  otherwise same steps apply.  ie you created a new db within the mySql instance- and need to use it.
+  it will require a new pool and jndi.
+2) Note you have to add entity classes to persistence.xml file as new entities are reqd
 
 Details
 1) helpful setup links:
@@ -29,5 +43,5 @@ Details
  correspond, but have the detailed info in different places.
 3)Note this requires mySQL to be up and running.  on localhost this server starts automatically when machine is turned on.  but 
   regardless of local or its own server- it has to be up and running.
-4)
+4) Note the test example here is j2ee-design java web project.  Mar 2018.
 5)Note that this is a standard folder and NOT a java package.  right click/new/other/folder, then add persistence.xml file
