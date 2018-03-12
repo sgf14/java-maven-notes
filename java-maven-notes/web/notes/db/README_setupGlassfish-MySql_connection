@@ -21,16 +21,15 @@ Quick Start new server setup:
 5) create java/resources/META-INF/persistence.xml folder/file
 	5.1) Note the provider.  Used Hibernate in tomcat and eclipse (tophat) in Glassfish [at least j2ee-design project]
 6) Create at least one Entity POJO class- with specific db column entries.  in j2ee-design, see Author.java
-7) Instantiate EntityManagerFactory. in j2ee-design see DaoServlet
+7) Instantiate EntityManagerFactory. in j2ee-design see DaoServlet.java
 8) Instantiate EntityManager that utilizes factory [DaoServlet]
 9) Create webpage ui display (.jsp file)
 10) programmatically test connection via java.  Tested these steps successfully Mar 2018 in j2ee-design project.
-11) new Entities- note in this method you have to alter persistence.xml w/ new entity classes (POJO's) are added over time.
-	and new <class> tagset.
+
 
 Quick Start- new db instance w/i existing server
-1) skip step 1 of above.  otherwise same steps apply.  ie you created a new db within the mySql instance- and need to use it.
-  it will require a new pool and jndi.
+1) skip step 1 of above.  otherwise same steps 2 and onward apply.  ie you created a new db within the mySql instance- 
+  and need to use it, it will require a new pool and jndi.
 2) Note you have to add entity classes to persistence.xml file as new entities are reqd
 
 Details
@@ -44,4 +43,14 @@ Details
 3)Note this requires mySQL to be up and running.  on localhost this server starts automatically when machine is turned on.  but 
   regardless of local or its own server- it has to be up and running.
 4) Note the test example here is j2ee-design java web project.  Mar 2018.
-5)Note that this is a standard folder and NOT a java package.  right click/new/other/folder, then add persistence.xml file
+5)Note that this is a standard folder and NOT a java package.  right click/new/other/folder, then add persistence.xml file.
+	5.1) server sensitive- tags must be right.  Note the specific tags and settings you use are very sensitive to the web server 
+	being used here.
+	I got two versions working on Glassfish and one on Tomcat after trial and error and book support. See j2ee-design app.
+9) Note during setup you should also be logging into mySql editor to confirm connectivity.
+	9.1) Client Connection- DB col.  Note the name of the mysql DB w/i the editor there is a DB column under client connections.  
+	This MUST show a db or you are note really connecting to anything (ie vs 'None').  even though a user has a portal instance showing
+	up on the client list.  One manitifestation of this is I didnt have the correct url, that included the db name- see quickstep above.
+11) --Old Note-  new Entities- note in this method you have to alter persistence.xml w/ new entity classes (POJO's) are added over time.
+	and new <class> tagset. 03/11/18- Added the include-unlisted-classes tag as false [similar to hibernate.  this worked.  so you 
+	dont have to adjust this every time you need a new entity.
