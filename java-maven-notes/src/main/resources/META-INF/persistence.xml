@@ -2,21 +2,44 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+        		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-<!-- example persistence.xml file, change table names/remove comments as required.  Template from entity-mappings java project-->
-<!-- Make sure you alter the app server context.xml AND you modified the correct one -->
-<!-- context.xml has the db specific details along with the driver info and per typical model its on the web server-not in the app itself -->
-<!-- see JWA chap 19, pg xxx, approx 574 context.xml holds the JNDI Resource tagset w/ db connection info-->
-<!-- if launching from Eclipse it has to be the Eclipse implementation of Tomcat server, not the base Program Files/Apache/.. version -->
-<!-- this unit name immediately below MUST match context.xml Resource name, less the jdbc/ portion -->
 
+<!-- connectivity to established server database -->
+	<!-- J2EE Book example Glassfish server- Hibernate.  -->
+	<!-- App launches properly with this.  Using this hibernate verion for now.  eclipse version below also works-->
+    <persistence-unit name="EntityMappings" transaction-type="RESOURCE_LOCAL">    	 
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>     
+        <jta-data-source>jdbc/EntityMappings</jta-data-source>        
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+        <validation-mode>NONE</validation-mode>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action"
+                      value="none" />
+        </properties>
+        
+    </persistence-unit>
+    
+    
+    <!-- J2EE Book example Glassfish server- Tophat/eclipse provider version.  -->
+	<!-- App also launches properly with this.  note different transaction type and provider.  
+	try the exclude-unlisted-classes tagset.  this version did work better for troubleshooting cnx error better
+	there was more specific detail.  hibernate only lists null pointer exception, wasnt very helpful-->
+    <persistence-unit name="EntityMappings" transaction-type="JTA">    	     	 
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>           
+        <jta-data-source>jdbc/EntityMappings</jta-data-source>
+        <!-- entity classes. Could do one entity at a time- or the exclude tag       
+        <class>com.prod.C12_dao.entities.Author</class>
+        -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>        
+    </persistence-unit>
+    
+    <!-- Java for web book version- Tomcat server. confirmed this works.  Must swap these if using Tomcat server instead of glassfish
     <persistence-unit name="EntityMappings" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <non-jta-data-source>
-            java:comp/env/jdbc/EntityMappings
-        </non-jta-data-source>
+        <non-jta-data-source>java:comp/env/jdbc/EntityMappings</non-jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <validation-mode>NONE</validation-mode>
@@ -25,8 +48,11 @@
                       value="none" />
         </properties>
     </persistence-unit>
+     -->     
+    
+    
 <!-- Some of the common persistence acronyms- see Tomcat website/ Persistence section.  see JWA chap 19,20 and 21, 
-JNDI = Java Naming & Directory Interface. directs to right db- context.xml
+JNDI = Java Naming & Directory Interface. directs to right db- context.xml for Tomcat.  in localhost:4848 admin console in glassfish.
 
 JPA = Java Persistence API.  Persistence code- Spring extends this, per chap 21.
 

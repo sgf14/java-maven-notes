@@ -15,6 +15,10 @@ Quick Start:
 9) Run a test app- make sure it starts.  This process worked with j2ee-design project on the Glassfish4 Application server.  It also still 
   works with Tomcat Web container.  They both default to http port 8080 so you cant have them both running at the same time w/o changing
   admin properties.
+---- ongoing maint ----
+10) to get to the admin console once launched for project type http://localhost:4848/  This gets you to the app server config screen
+11) setup database connectivity for your app.  see db readme file for details.
+12) you have to setup/revisit db connections any time you are using some different database.
 
 
 Details/Notes:
@@ -37,5 +41,5 @@ in glassfish5/glassfish/docs folder- some htmls in there.  this si the next step
 
 Other info:
 In Java there are two basic styles of servers- the webserver and the application server.  see ..server.. readme for details
-tomcat is a basic webserver, glassfish is more enterprise oriented applciation server that was forked off hte original
+tomcat is a basic webserver, glassfish is more enterprise oriented application server that was forked off the original
 apache tomcat web server.  it includes some enhanced capabilities for REST, security, etc.  other app server of similar type are jboss/wildfly, weblogic, jetty, payara and several others. 
