@@ -9,7 +9,7 @@ Quick Reference- Git and Github register new project:
 	  	This physically moves the project from eclipse workspace folder to local git folder.
 	  	In Eclipse it adds git decoration [name] and says ..NO-HEAD.  this is ok you havent committed any files yet
 	1.6) In Eclipse right click project/team/commit
-		make initial commits- do NOT push at this time.  Push is for web based github
+		make initial commits- do NOT push at this time.  Push is for web based github.  NO HEAD decoration changes to MASTER
 	  	
 2) Git- Create project in local git first
 	2.1) Go into local version of Github (the github app icon on the desktop- this accesses local Git directory)
@@ -21,7 +21,7 @@ Quick Reference- Git and Github register new project:
 		Your Eclipse buttons for push are now visible- most were greyed out before.	
     
 3) Test project
-	3.1) In Eclispe you have already tested commit to local repo above
+	3.1) In Eclipse you have already tested commit to local repo above
 	3.2) Change a file, save.  Then Commit/Commit and Push to check both local and remote repo.
 	3.3) after positive confirmation in Eclipse, go online and validate git hub update
 
